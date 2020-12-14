@@ -1,0 +1,58 @@
+{{>layout/header}}
+<h1>게시글 등록</h1>
+<div class="col-md-12">
+    <!--    div는 화면에 얼마만큼 차지를 할 것인가를 뜻함.
+    col:column, md:middle사이즈(모니터기준. 992px 이상) 12:가로폭을 12개로 쪼개 쓸것이다.
+    컬럼:열(세로) 로우:행(가로)-->
+
+
+                <table class="table table-horizontal table-bordered">
+                    <thead class="thead-strong">
+                    <tr>
+                        <th>내용</th>
+                        <th>작성자</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="tbody">
+                    {{#posts}}
+                        <!--    mustache에서의 반복문(mustache : html을 만들어주는 템플릿 엔진)-->
+                        <tr>
+
+                            <!--            td : 하나씩 데이터 입력. table data? 인듯-->
+                            <td>{{content}}</td>
+                            <!--            p11-1 posts/update/... 게시글 수정 화면으로 이동-->
+                            <td>{{author}}</td>
+
+                        </tr>
+                    {{/posts}}
+                    </tbody>
+                </table>
+    <div class="col-md-4">
+        <form>
+<!--            row가 아닌 form으로 들어가서 일종의 테이블 처럼 들어간다-->
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" value="{{posts.title}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="author2">작성자</label>
+                <input type="text" class="form-control" id="author2" placeholder="작성자를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content2">내용</label>
+                <textarea class="form-control" id="content2" placeholder="내용을 입력하세요"></textarea>
+<!--                textarea : text와는 다르게 여러줄을 입력받고 싶을때 씀.-->
+<!--                input text 하지 않고 그냥 textarea로 바로 들어간다는 것도 알아둬야 할 점-->
+<!--                여러줄 들어가는 건 input 타입으로 받을 수 없기 때문-->
+            </div>
+        </form>
+
+        <button type="button" class="btn btn-primary" id="btn-save">릴레이</button>
+        <!--        버튼 만드는 태그. a는 링크에 해당하는 것, href 다음에 경로는 버튼 눌렀을때 그 경로로 간다는 것-->
+        <!--                id : 실제로 저장될때 쓰이는 변수이름-->
+        <!--        btn-primary는 파란색버튼을 의미-->
+    </div>
+</div>
+{{>layout/footer}}
